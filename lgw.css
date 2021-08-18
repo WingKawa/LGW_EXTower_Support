@@ -1,9 +1,14 @@
+body {
+	margin: 0;
+}
+
 /*  card
       ------------------------------------- */
 .new-record-popup-card, .edit-record-popup-card {
 	position: absolute;
 	width: 100%;
-	background-color: #ada73561;
+	height: 100%;
+	background-color: #000000b8;
 	display: none;
 }
 .show {
@@ -211,6 +216,7 @@
 
 .button-area-new {
 	margin-left: 50px;
+	padding-top: 13px;
 }
 
 .button-save-area {
@@ -290,8 +296,8 @@ textarea {
 }
 
 .btn-save {
-	background-color: #16fa01;
-	border-color: #16fa01;
+	background-color: #0e9802;
+	border-color: #0e9802;
 }
 label {
 	color: #777;
