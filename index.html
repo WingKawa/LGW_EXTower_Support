@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel=stylesheet type="text/css" href="lgw.css">
+	<title>EX塔自助餐2.0 - LINE: 鋼彈大亂鬥</title>
+</head>
+<body>
+	<div id="form-new-record-popup-card" class="new-record-popup-card">
+		<div id="form-main-container">
+			<div id="form-area">
+				<div id="form-title">Thank you very much!</div>
+				<div id="form-body">
+					<div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input4"
+									>Line Id</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="input4"
+									placeholder="Line Id"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input5">Unit</label>
+								<input
+									type="text"
+									class="form-control"
+									id="input5"
+									placeholder="Unit"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input6"
+									>Other Unit</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="input6"
+									placeholder="Other Unit"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input7"
+									>Remark</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="input7"
+									placeholder="Remark"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input8"
+									>Password</label
+								>
+								<input
+									type="password"
+									class="form-control"
+									id="input8"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input9"
+									>Confirm Password</label
+								>
+								<input
+									type="password"
+									class="form-control"
+									id="input9"
+									required
+								/>
+							</fieldset>
+						</div>
+					</div>
+					<div class="center-text button-area">
+						<button id="btn-new-record-submit" type="button" class="btn btn-save">Submit</button>
+						<button id="btn-new-record-cancel" type="button" class="btn btn-cancel">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="form-edit-record-popup-card" class="edit-record-popup-card">
+		<div id="form-main-container">
+			<div id="form-area">
+				<div id="form-title">Thank you very much!</div>
+				<div id="form-body">
+					<div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input4"
+									>Line Id</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="input4"
+									placeholder="Line Id"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input5">Unit</label>
+								<input
+									type="text"
+									class="form-control"
+									id="input5"
+									placeholder="Unit"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input6"
+									>Other Unit</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="input6"
+									placeholder="Other Unit"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input7"
+									>Remark</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="input7"
+									placeholder="Remark"
+									required
+								/>
+							</fieldset>
+						</div>
+						<div class="col-12">
+							<fieldset class="form-group">
+								<label class="form-label" for="input8"
+									>Password</label
+								>
+								<input
+									type="password"
+									class="form-control"
+									id="input8"
+									required
+								/>
+							</fieldset>
+						</div>
+					</div>
+					<div class="center-text button-area">
+						<button id="btn-edit-record-submit" type="button" class="btn btn-save">Submit</button>
+						<button id="btn-edit-record-cancel" type="button" class="btn btn-cancel">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="button-area-new">
+		<button id="btn-new-record" class="btn" style="margin: 0;">New Record</button>
+	</div>
+	<div class="table-outbox">
+		<table>
+			<thead>
+				<tr>
+					<th class="css_td">Line Id</th>
+					<th class="css_td">Leader Unit / 隊長機 / リーダー 機体</th>
+					<th class="css_td">Remark / 備註 / リマーク</th>
+					<th class="css_td">Control / 操作 / コントロール</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>data1</td>
+					<td>data2</td>
+					<td>data3</td>
+					<td>
+						<button class="btn btn-send btn-edit btn-edit-record" data-index="1"> Edit </button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script type="text/javascript" src="lgw.js"></script>
+</html>
