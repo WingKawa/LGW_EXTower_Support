@@ -2,14 +2,29 @@ body {
 	margin: 0;
 }
 
+.h1-title {
+	margin-top: 0;
+	margin-left: 50px;
+	padding-top: 0.67rem;
+}
+.info {
+	margin: 50px;
+	font-size: 1.5rem;
+	line-height: 15px;
+}
+
 /*  card
       ------------------------------------- */
-.new-record-popup-card, .edit-record-popup-card {
+.new-record-popup-card, .edit-record-popup-card, .info-card{
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background-color: #000000b8;
 	display: none;
+}
+.info-card .form-main-container{
+	font-size: 1.5rem;
+	width: 80%;
 }
 .show {
 	display: block;
@@ -29,7 +44,7 @@ body {
 .center-text {
 	text-align: center;
 }
-#form-main-container {
+.form-main-container {
 	display: block;
 	position: relative;
 	background-color: #fff;
@@ -299,6 +314,25 @@ textarea {
 	background-color: #0e9802;
 	border-color: #0e9802;
 }
+
+.btn-new-record {
+	margin: 0;
+}
+.btn-info-close {
+	font-size: 1.5rem;
+}
+.btn-edit {
+	background-color: #6b7a85;
+	border-color: #6b7a85;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+.btn-delete {
+	background-color: #af0f00;
+	border-color: #af0f00;
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
 label {
 	color: #777;
 	font-weight: 600;
@@ -314,6 +348,7 @@ label {
 	margin: 50px; /* 添加外距 */
 	margin-top: 10px;
 	box-shadow: 0px 35px 50px rgba(27, 31, 49, 0.1); /* 添加表格陰影 */
+	font-size: 1.5rem;
 }
 
 /*  table
@@ -341,4 +376,20 @@ table td {
 
 table tr:nth-child(even) {
 	background: #f8f8f8; /* 表格偶數 tr 灰色背景 */
+}
+
+td td1{
+	width: 20%;
+}
+td td2{
+	width: 10%;
+}
+td td3{
+	width: 25%;
+}
+td td4{
+	width: 25%;
+}
+td td5{
+	width: 20%;
 }

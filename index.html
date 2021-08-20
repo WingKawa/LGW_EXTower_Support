@@ -9,16 +9,31 @@
 </head>
 <body>
 	<div class="main">
+		<div id="info-card" class="info-card">
+			<div class="form-main-container">
+				<p>此表與送體無關，如要送體收體請隨緣，不可強求。</p>
+				<p>提供者請按下「新建一筆」輸入「自己」的LineId(暫不提供QRCode)及相關機體資訊。</p>
+				<p>新建時請記得自己輸入的密碼，下次編輯時輸入正確的密碼才能修改自己的資料。</p>
+				<p>隊長機如有變更，盡可能來這邊按下「編輯」更新一下，方便有需要幫忙的人能盡快得到幫助。</p>
+				<p>如果有加體群，又是本尊送體的，如有必要，請在通關後將你從此表加的好友從好友清單刪除，以免影響到體群的其他人的權益哦。</p>
+				<p>若不想一直加不認識的人，也請記得用完就把人從好友清單刪除。</p>
+				<p>塔層數很多，不是每個人機庫都能靠自己踏破，彼此幫忙協助通關吧!</p>
+				<div class="center-text button-area">
+					<button id="btn-info-close" type="button" class="btn btn-info-close">關閉</button>
+				</div>
+			</div>
+		</div>
+
 		<div id="form-new-record-popup-card" class="new-record-popup-card">
-			<div id="form-main-container">
+			<div class="form-main-container">
 				<div id="form-area">
-					<div id="form-title">Thank you very much!</div>
+					<div id="form-title">新建</div>
 					<div id="form-body">
 						<div>
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input-new-line-id"
-										>Line Id</label
+										><span style="color: red;">*</span>Line Id</label
 									>
 									<input
 										type="text"
@@ -31,7 +46,7 @@
 							</div>
 							<div class="col-12">
 								<fieldset class="form-group">
-									<label class="form-label" for="input-new-unit">Unit</label>
+									<label class="form-label" for="input-new-unit"><span style="color: red;">*</span>隊長機</label>
 									<input
 										type="text"
 										class="form-control"
@@ -44,7 +59,7 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input-new-other-unit"
-										>Other Unit</label
+										>其他隊長機</label
 									>
 									<input
 										type="text"
@@ -58,7 +73,7 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input-new-remark"
-										>Remark</label
+										>備註</label
 									>
 									<input
 										type="text"
@@ -72,7 +87,7 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input-new-password"
-										>Password</label
+										><span style="color: red;">*</span>密碼(用於修改您輸入的資料)</label
 									>
 									<input
 										type="password"
@@ -84,8 +99,8 @@
 							</div>
 						</div>
 						<div class="center-text button-area">
-							<button id="btn-new-record-submit" type="button" class="btn btn-save">Submit</button>
-							<button id="btn-new-record-cancel" type="button" class="btn btn-cancel">Cancel</button>
+							<button id="btn-new-record-submit" type="button" class="btn btn-save">送出</button>
+							<button id="btn-new-record-cancel" type="button" class="btn btn-cancel">取消</button>
 						</div>
 					</div>
 				</div>
@@ -93,20 +108,20 @@
 		</div>
 		
 		<div id="form-edit-record-popup-card" class="edit-record-popup-card">
-			<div id="form-main-container">
+			<div class="form-main-container">
 				<div id="form-area">
-					<div id="form-title">Thank you very much!</div>
+					<div id="form-title">修改</div>
 					<div id="form-body">
 						<div>
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input4"
-										>Line Id</label
+										>Line Id (設為空送出後就會刪除)</label
 									>
 									<input
 										type="text"
 										class="form-control"
-										id="input4"
+										id="input-line-id"
 										placeholder="Line Id"
 										required
 									/>
@@ -114,11 +129,11 @@
 							</div>
 							<div class="col-12">
 								<fieldset class="form-group">
-									<label class="form-label" for="input5">Unit</label>
+									<label class="form-label" for="input5">隊長機</label>
 									<input
 										type="text"
 										class="form-control"
-										id="input5"
+										id="input-unit"
 										placeholder="Unit"
 										required
 									/>
@@ -127,12 +142,12 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input6"
-										>Other Unit</label
+										>其他隊長機</label
 									>
 									<input
 										type="text"
 										class="form-control"
-										id="input6"
+										id="input-other-unit"
 										placeholder="Other Unit"
 										required
 									/>
@@ -141,12 +156,12 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input7"
-										>Remark</label
+										>備註</label
 									>
 									<input
 										type="text"
 										class="form-control"
-										id="input7"
+										id="input-remark"
 										placeholder="Remark"
 										required
 									/>
@@ -155,38 +170,54 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input8"
-										>Password</label
+										>密碼</label
 									>
 									<input
 										type="password"
 										class="form-control"
-										id="input8"
+										id="input-password"
+										required
+									/>
+								</fieldset>
+							</div>
+							<div class="col-12">
+								<fieldset class="form-group">
+									<label class="form-label" for="input8"
+										>新密碼(如不更改請留空)</label
+									>
+									<input
+										type="password"
+										class="form-control"
+										id="input-edit-password"
 										required
 									/>
 								</fieldset>
 							</div>
 						</div>
 						<div class="center-text button-area">
-							<button id="btn-edit-record-submit" type="button" class="btn btn-save">Submit</button>
-							<button id="btn-edit-record-cancel" type="button" class="btn btn-cancel">Cancel</button>
+							<button id="btn-edit-record-submit" type="button" class="btn btn-save">送出</button>
+							<button id="btn-edit-record-cancel" type="button" class="btn btn-cancel">取消</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
+
+		<h1 class="h1-title">EX塔自助餐2.0 - LINE: 鋼彈大亂鬥 ver. 0.0.1</h1>
 		<div class="button-area-new">
-			<button id="btn-new-record" class="btn" style="margin: 0;">New Record</button>
+			<button id="btn-new-record" class="btn btn-new-record">新建一筆</button>
+			<button id="btn-info" class="btn btn-info">說明</button>
 		</div>
 		<div class="table-outbox">
 			<table>
 				<thead>
 					<tr>
-						<th class="css_td">Line Id</th>
-						<th class="css_td">Leader Unit / 隊長機 / リーダー 機体</th>
-						<th class="css_td">Other Unit / 隊長機 / その他の機体</th>
-						<th class="css_td">Remark / 備註 / リマーク</th>
-						<th class="css_td">Control / 操作 / コントロール</th>
+						<th class="css_td td1">Line Id</th>
+						<th class="css_td td2">隊長機</th>
+						<th class="css_td td3">其他隊長機</th>
+						<th class="css_td td4">備註</th>
+						<th class="css_td td5">操作</th>
 					</tr>
 				</thead>
 				<tbody id="content">
