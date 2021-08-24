@@ -4,10 +4,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel=stylesheet type="text/css" href="lgw.css">
+	<link rel="stylesheet" type="text/css" href="lgw.css?v=0.0.2.2">
+	<link rel="stylesheet" id='fontawesome-css' href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" type='text/css' media='all'>
 	<title>EX塔自助餐2.0 - LINE: 鋼彈大亂鬥</title>
 </head>
 <body>
+	<div id="loading" class='lmask'></div>
+
 	<div class="main">
 		<div id="info-card" class="info-card">
 			<div class="form-main-container">
@@ -129,7 +132,7 @@
 							</div>
 							<div class="col-12">
 								<fieldset class="form-group">
-									<label class="form-label" for="input5">隊長機</label>
+									<label class="form-label" for="input5"><span style="color: red;">*</span>隊長機</label>
 									<input
 										type="text"
 										class="form-control"
@@ -170,7 +173,7 @@
 							<div class="col-12">
 								<fieldset class="form-group">
 									<label class="form-label" for="input8"
-										>密碼</label
+										><span style="color: red;">*</span>密碼</label
 									>
 									<input
 										type="password"
@@ -204,19 +207,28 @@
 		</div>
 		
 
-		<h1 class="h1-title">EX塔自助餐2.0 - LINE: 鋼彈大亂鬥 ver. 0.0.1</h1>
+		<h1 class="h1-title">EX塔自助餐2.0 - LINE: 鋼彈大亂鬥 ver. 0.0.2</h1>
 		<div class="button-area-new">
 			<button id="btn-new-record" class="btn btn-new-record">新建一筆</button>
 			<button id="btn-info" class="btn btn-info">說明</button>
 		</div>
+
+		<div class="div-filter">
+			<input
+				type="text"
+				class="form-control input-filter"
+				id="input-filter"
+				placeholder="搜尋"
+			/>
+		</div>
 		<div class="table-outbox">
-			<table>
+			<table id="table-id-info">
 				<thead>
 					<tr>
-						<th class="css_td td1">Line Id</th>
-						<th class="css_td td2">隊長機</th>
-						<th class="css_td td3">其他隊長機</th>
-						<th class="css_td td4">備註</th>
+						<th class="css_td td1" order="no" s-col="LineId">Line Id</th>
+						<th class="css_td td2" order="no" s-col="Unit">隊長機</th>
+						<th class="css_td td3" order="no" s-col="OtherUnit">其他隊長機</th>
+						<th class="css_td td4" order="no" s-col="Remark">備註</th>
 						<th class="css_td td5">操作</th>
 					</tr>
 				</thead>
@@ -226,6 +238,21 @@
 		</div>
 
 	</div>
+
+	<div id="ad">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4763343261444024"
+			crossorigin="anonymous"></script>
+		<!-- LGW -->
+		<ins class="adsbygoogle"
+			style="display:block"
+			data-ad-client="ca-pub-4763343261444024"
+			data-ad-slot="1377381148"
+			data-ad-format="auto"
+			data-full-width-responsive="true"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
 </body>
-<script type="text/javascript" src="lgw.js"></script>
+<script type="text/javascript" src="lgw.js?v=0.0.2.1"></script>
 </html>
