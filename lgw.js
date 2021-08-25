@@ -3,14 +3,16 @@ function initBtn() {
 	var btnNewRecord = document.getElementById("btn-new-record");
 	var btnNewRecordCancel = document.getElementById("btn-new-record-cancel");
 	var btnNewRecordSubmit = document.getElementById("btn-new-record-submit");
-	var formNewRecordPopupCard = document.getElementById("form-new-record-popup-card");
-	btnNewRecord.onclick = function(e) {
+	var formNewRecordPopupCard = document.getElementById(
+		"form-new-record-popup-card"
+	);
+	btnNewRecord.onclick = function (e) {
 		formNewRecordPopupCard.classList.add("show");
-	}
-	btnNewRecordCancel.onclick = function(e) {
+	};
+	btnNewRecordCancel.onclick = function (e) {
 		formNewRecordPopupCard.classList.remove("show");
-	}
-	btnNewRecordSubmit.onclick = function(e) {
+	};
+	btnNewRecordSubmit.onclick = function (e) {
 		let data = new FormData();
 		let inputNewLineId = document.getElementById("input-new-line-id");
 		let inputNewUnit = document.getElementById("input-new-unit");
@@ -39,15 +41,15 @@ function initBtn() {
 
 		let xhr = new XMLHttpRequest();
 
-		xhr.addEventListener("readystatechange", function() {
+		xhr.addEventListener("readystatechange", function () {
 			if (this.readyState === 4) {
-				console.log('add result:', this.responseText);
+				console.log("add result:", this.responseText);
 
 				if (this.responseText === "Success") {
 					refresh();
-	
+
 					alert("操作成功");
-					
+
 					formNewRecordPopupCard.classList.remove("show");
 					inputNewLineId.value = "";
 					inputNewUnit.value = "";
@@ -57,43 +59,55 @@ function initBtn() {
 				} else {
 					alert("發生錯誤:", this.responseText);
 				}
+
+				loading(false);
 			}
 		});
 
-		xhr.open("POST", "https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec");
+		xhr.open(
+			"POST",
+			"https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec"
+		);
 
 		xhr.send(data);
-	}
-	
+
+		loading(true);
+	};
+
 	// 修改
 	var btnEditRecord = document.getElementsByClassName("btn-edit-record");
 	var btnEditRecordCancel = document.getElementById("btn-edit-record-cancel");
 	var btnEditRecordSubmit = document.getElementById("btn-edit-record-submit");
-	var formEditRecordPopupCard = document.getElementById("form-edit-record-popup-card");
+	var formEditRecordPopupCard = document.getElementById(
+		"form-edit-record-popup-card"
+	);
 	for (const index in btnEditRecord) {
 		if (Object.hasOwnProperty.call(btnEditRecord, index)) {
 			const btn = btnEditRecord[index];
-			btn.onclick = function(e) {
+			btn.onclick = function (e) {
 				formEditRecordPopupCard.classList.add("show");
 
-				let btnSubmit = document.getElementById("btn-edit-record-submit");
+				let btnSubmit = document.getElementById(
+					"btn-edit-record-submit"
+				);
 				btnSubmit.dataset.index = btn.dataset.index;
 
 				let inputLineId = document.getElementById("input-line-id");
 				let inputUnit = document.getElementById("input-unit");
-				let inputOtherUnit = document.getElementById("input-other-unit");
+				let inputOtherUnit =
+					document.getElementById("input-other-unit");
 				let inputRemark = document.getElementById("input-remark");
 				inputLineId.value = btn.dataset.lineId;
 				inputUnit.value = btn.dataset.unit;
 				inputOtherUnit.value = btn.dataset.otherUnit;
 				inputRemark.value = btn.dataset.remark;
-			}
+			};
 		}
 	}
-	btnEditRecordCancel.onclick = function(e) {
+	btnEditRecordCancel.onclick = function (e) {
 		formEditRecordPopupCard.classList.remove("show");
-	}
-	btnEditRecordSubmit.onclick = function(e) {
+	};
+	btnEditRecordSubmit.onclick = function (e) {
 		let data = new FormData();
 		let inputLineId = document.getElementById("input-line-id");
 		let inputUnit = document.getElementById("input-unit");
@@ -101,59 +115,80 @@ function initBtn() {
 		let inputRemark = document.getElementById("input-remark");
 		let inputPassword = document.getElementById("input-password");
 		let inputEditPassword = document.getElementById("input-edit-password");
+
+		if (!inputUnit.value.trim()) {
+			alert("請輸入隊長機");
+			return false;
+		}
+		if (!inputPassword.value.trim()) {
+			alert("請輸入密碼");
+			return false;
+		}
+
 		data.append("LineId", inputLineId.value);
 		data.append("Unit", inputUnit.value);
 		data.append("OtherUnit", inputOtherUnit.value);
 		data.append("Remark", inputRemark.value);
 		data.append("Password", inputPassword.value);
 		data.append("NewPassword", inputEditPassword.value);
-		data.append("Index", document.getElementById("btn-edit-record-submit").dataset.index);
+		data.append(
+			"Index",
+			document.getElementById("btn-edit-record-submit").dataset.index
+		);
 
 		let xhr = new XMLHttpRequest();
 
-		xhr.addEventListener("readystatechange", function() {
+		xhr.addEventListener("readystatechange", function () {
 			if (this.readyState === 4) {
-				console.log('edit result:', this.responseText);
+				console.log("edit result:", this.responseText);
 
 				if (this.responseText === "Success") {
 					refresh();
-	
+
 					alert("操作成功");
-	
+
 					formEditRecordPopupCard.classList.remove("show");
 					inputLineId.value = "";
 					inputUnit.value = "";
 					inputOtherUnit.value = "";
 					inputRemark.value = "";
 					inputPassword.value = "";
+					inputEditPassword.value = "";
 				} else {
 					alert("發生錯誤: " + this.responseText);
 				}
+
+				loading(false);
 			}
 		});
 
-		xhr.open("POST", "https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec");
+		xhr.open(
+			"POST",
+			"https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec"
+		);
 
 		xhr.send(data);
-	}
+
+		loading(true);
+	};
 
 	// 說明
 	var btnInfo = document.getElementById("btn-info");
 	var btnInfoClose = document.getElementById("btn-info-close");
 	var infoCard = document.getElementById("info-card");
-	btnInfo.onclick = function(e) {
+	btnInfo.onclick = function (e) {
 		infoCard.classList.add("show");
-	}
-	btnInfoClose.onclick = function(e) {
+	};
+	btnInfoClose.onclick = function (e) {
 		infoCard.classList.remove("show");
-	}
+	};
 }
 
 function refresh() {
 	let dataList = [];
 
 	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("readystatechange", function() {
+	xhr.addEventListener("readystatechange", function () {
 		if (this.readyState === 4) {
 			// console.log(this.responseText);
 			dataList = JSON.parse(this.responseText);
@@ -161,7 +196,7 @@ function refresh() {
 
 			let tbody = document.getElementById("content");
 			tbody.innerHTML = "";
-			dataList.forEach(row => {
+			dataList.forEach((row) => {
 				let tr = document.createElement("tr");
 				// line id
 				let tdLineId = document.createElement("td");
@@ -173,7 +208,9 @@ function refresh() {
 				tr.appendChild(tdUnit);
 				// other unit
 				let tdOtherUnit = document.createElement("td");
-				tdOtherUnit.appendChild(document.createTextNode(row.data.OtherUnit));
+				tdOtherUnit.appendChild(
+					document.createTextNode(row.data.OtherUnit)
+				);
 				tr.appendChild(tdOtherUnit);
 				// remark
 				let tdRemark = document.createElement("td");
@@ -197,21 +234,34 @@ function refresh() {
 			initBtn();
 		}
 	});
-	xhr.open("GET", "https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec");
+	xhr.open(
+		"GET",
+		"https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec"
+	);
 
 	xhr.send();
 }
 
-(function() {
+function loading(display) {
+	let divLoading = document.getElementById("loading");
+	if (display) {
+		divLoading.classList.add("show");
+	} else {
+		divLoading.classList.remove("show");
+	}
+}
+
+(function () {
+	// get datas
 	let dataList = [];
 
 	var xhr = new XMLHttpRequest();
-	xhr.addEventListener("readystatechange", function() {
+	xhr.addEventListener("readystatechange", function () {
 		if (this.readyState === 4) {
 			dataList = JSON.parse(this.responseText);
 
 			let tbody = document.getElementById("content");
-			dataList.forEach(row => {
+			dataList.forEach((row, index) => {
 				let tr = document.createElement("tr");
 				// line id
 				let tdLineId = document.createElement("td");
@@ -223,7 +273,9 @@ function refresh() {
 				tr.appendChild(tdUnit);
 				// other unit
 				let tdOtherUnit = document.createElement("td");
-				tdOtherUnit.appendChild(document.createTextNode(row.data.OtherUnit));
+				tdOtherUnit.appendChild(
+					document.createTextNode(row.data.OtherUnit)
+				);
 				tr.appendChild(tdOtherUnit);
 				// remark
 				let tdRemark = document.createElement("td");
@@ -243,11 +295,99 @@ function refresh() {
 				tr.appendChild(tdControl);
 
 				tbody.appendChild(tr);
+				dataList[index].dom = tr;
 			});
 			initBtn();
 		}
 	});
-	xhr.open("GET", "https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec");
+	xhr.open(
+		"GET",
+		"https://script.google.com/macros/s/AKfycbxZIccw-pVWiTJysG0_8C1A7APwgSaI0yvRI2Yq2ubMjugRfZZjpaAO2c_It1n9v3Yc/exec"
+	);
 
 	xhr.send();
-}());
+
+	// sort table
+	let sortableElem = document.getElementById("content");
+	let columnHead = document.querySelectorAll("th[order]");
+	let current_sort_column =
+		document.querySelector('th[order="bs"]') ||
+		document.querySelector('th[order="sb"]');
+	for (i = 0; i < columnHead.length; i++) {
+		columnHead[i].addEventListener(
+			"click",
+			function () {
+				let order = this.getAttribute("order");
+				if (order === "bs" || order === "no") {
+					this.setAttribute("order", "sb");
+					this.classList.toggle("sb");
+					dataList.sort(sortSB(this.getAttribute("s-col")));
+					reorderDOM();
+				} else if (order === "sb") {
+					this.setAttribute("order", "bs");
+					this.classList.toggle("bs");
+					dataList.sort(sortBS(this.getAttribute("s-col")));
+					reorderDOM();
+				}
+				if (
+					current_sort_column != null &&
+					current_sort_column != this
+				) {
+					current_sort_column.setAttribute("order", "no");
+				}
+				current_sort_column = this;
+			},
+			false
+		);
+	}
+
+	function reorderDOM(filter) {
+		cleanDOM();
+
+		for (var i = 0; i < dataList.length; i++) {
+			let found = Object.keys(dataList[i].data).filter(function(key) {
+				return dataList[i].data[key].includes(filter);
+			});
+			if (found.length) {
+				sortableElem.appendChild(dataList[i].dom);
+			}
+		}
+	}
+
+	function cleanDOM() {
+		let tbody = document.getElementById("content");
+		tbody.innerHTML = "";
+	}
+
+	function sortSB(column) {
+		return function (a, b) {
+			if (a.data[column] < b.data[column]) {
+				return -1;
+			}
+			if (a.data[column] > b.data[column]) {
+				return 1;
+			}
+			return 0;
+		};
+	}
+
+	function sortBS(column) {
+		return function (a, b) {
+			if (a.data[column] < b.data[column]) {
+				return 1;
+			}
+			if (a.data[column] > b.data[column]) {
+				return -1;
+			}
+			return 0;
+		};
+	}
+
+	// filter
+	// input-filter
+	let inputFilter = document.getElementById("input-filter");
+	inputFilter.onkeyup = function (event) {
+		let filter = inputFilter.value;
+		reorderDOM(filter);
+	};
+})();
